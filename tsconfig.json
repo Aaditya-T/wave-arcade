@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/config" },
+    { "path": "packages/db" },
+    { "path": "packages/xrpl" },
+    { "path": "packages/game-engine" },
+    { "path": "packages/auth" },
+    { "path": "packages/ui" },
+    { "path": "apps/web" },
+    { "path": "apps/xapp" },
+    { "path": "apps/api" },
+    { "path": "apps/discord-bot" },
+    { "path": "apps/telegram-bot" }
+  ]
+}

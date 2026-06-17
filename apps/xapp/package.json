@@ -1,0 +1,14 @@
+{
+  "name": "xapp",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2"
+  }
+}

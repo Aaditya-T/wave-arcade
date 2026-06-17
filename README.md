@@ -4,7 +4,7 @@
 
 Wave Arcade helps XRPL communities convert passive members into active users through social payments, quests, bounties, mini-games, AI challenges, shared canvases, and live community events.
 
-Users can connect an XRPL wallet, tip friends, join factions, complete quests, attack community bosses, paint on collaborative canvases, participate in AI-powered challenges, collect badges, and climb global or server-specific leaderboards — all powered by real XRPL interactions.
+Users can connect an XRPL wallet, tip friends, join factions, complete quests, attack community bosses, paint on collaborative canvases, participate in AI-powered challenges, collect badges, job boards and climb global or server-specific leaderboards — all powered by real XRPL interactions.
 
 ---
 
@@ -574,6 +574,8 @@ A place where users do not just read about XRPL, but actively participate, trans
 ## Status
 
 This project is currently in early development.
+
+See [docs/MILESTONES.md](docs/MILESTONES.md) for the step-by-step build guide.
 
 Initial goals:
 
