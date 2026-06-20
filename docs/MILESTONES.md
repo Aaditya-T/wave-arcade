@@ -95,11 +95,11 @@ Use pixel font sparingly on mobile — headings and buttons only; keep body read
 
 ### Tailwind setup (`packages/ui`)
 
-- [ ] **File:** `packages/ui/tailwind.preset.ts`
-- [ ] Extend `theme.colors` with arcade tokens above
-- [ ] Extend `fontFamily.pixel` → `['"Press Start 2P"', 'monospace']`
-- [ ] Utility classes: `pixel-border`, `pixel-btn`, `arcade-panel`, `scanline` (optional overlay)
-- [ ] **Done when:** preset exports and can be imported by `apps/web`
+- [x] **File:** `packages/ui/tailwind.preset.ts`
+- [x] Extend `theme.colors` with arcade tokens above
+- [x] Extend `fontFamily.pixel` → `['"Press Start 2P"', 'monospace']`
+- [x] Utility classes: `pixel-border`, `pixel-btn`, `arcade-panel`, `scanline` (optional overlay)
+- [x] **Done when:** preset exports and can be imported by `apps/web`
 
 ### Component style rules
 
@@ -114,19 +114,19 @@ Use pixel font sparingly on mobile — headings and buttons only; keep body read
 
 Use shadcn for structure (Dialog, Dropdown, Toast) but **override** with arcade tokens.
 
-- [ ] **File:** `packages/ui/src/theme/arcade.css`
-- [ ] Override shadcn CSS variables to arcade colors
-- [ ] Remove default rounded corners on shadcn components
-- [ ] **Done when:** a shadcn Dialog and Toast look pixel-arcade, not default minimal
+- [x] **File:** `packages/ui/src/theme/arcade.css`
+- [x] Override shadcn CSS variables to arcade colors
+- [x] Remove default rounded corners on shadcn components
+- [x] **Done when:** a shadcn Dialog and Toast look pixel-arcade, not default minimal
 
 ### Base components (Milestone 1)
 
 Build these in `packages/ui` before feature screens:
 
-- [ ] `ArcadeButton` — pixel border, press state, optional loading spinner
-- [ ] `ArcadePanel` — dark surface + neon border + offset shadow
-- [ ] `XpBar` — segmented blocks, gold fill, level label
-- [ ] `PixelBadge` — small tag for faction, quest status, wallet mode
+- [x] `ArcadeButton` — pixel border, press state, optional loading spinner
+- [x] `ArcadePanel` — dark surface + neon border + offset shadow
+- [x] `XpBar` — segmented blocks, gold fill, level label
+- [x] `PixelBadge` — small tag for faction, quest status, wallet mode
 
 ### Assets to source (Milestone 4 prep)
 
@@ -185,102 +185,102 @@ All packages build. `pnpm dev` starts Turbo dev pipeline.
 
 ### `packages/config`
 
-- [ ] **File:** `packages/config/src/env.ts`
-- [ ] Zod validation: `APP_URL`, `API_URL`, `XRPL_NETWORK`, `SUPABASE_URL`, etc.
-- [ ] **Done when:** invalid env throws at startup with clear message
+- [x] **File:** `packages/config/src/env.ts`
+- [x] Zod validation: `APP_URL`, `API_URL`, `XRPL_NETWORK`, `SUPABASE_URL`, etc.
+- [x] **Done when:** invalid env throws at startup with clear message
 
-- [ ] **File:** `packages/config/src/constants.ts`
-- [ ] XP per level formula, cooldown defaults, source tag helpers
-- [ ] **Done when:** constants exported and used by game-engine tests
+- [x] **File:** `packages/config/src/constants.ts`
+- [x] XP per level formula, cooldown defaults, source tag helpers
+- [x] **Done when:** constants exported and used by game-engine tests
 
 ### `packages/db`
 
-- [ ] **File:** `packages/db/src/client.ts`
-- [ ] Supabase client factory (anon + service role)
-- [ ] **Done when:** both clients export from package index
+- [x] **File:** `packages/db/src/client.ts`
+- [x] Supabase client factory (publishable + secret keys)
+- [x] **Done when:** both clients export from package index
 
-- [ ] **File:** `packages/db/src/types.ts`
-- [ ] Typed table types for core entities (manual or generated)
-- [ ] **Done when:** `Profile`, `User`, `Wallet`, `LinkedAccount` types exist
+- [x] **File:** `packages/db/src/types.ts`
+- [x] Typed table types for core entities (manual or generated)
+- [x] **Done when:** `Profile`, `User`, `Wallet`, `LinkedAccount` types exist
 
-- [ ] **File:** `packages/db/src/queries/`
-- [ ] `getUserByWallet`, `getProfile`, `linkAccount` query helpers
-- [ ] **Done when:** helpers accept typed inputs, return typed outputs
+- [x] **File:** `packages/db/src/queries/`
+- [x] `getUserByWallet`, `getProfile`, `linkAccount` query helpers
+- [x] **Done when:** helpers accept typed inputs, return typed outputs
 
 ### `packages/auth`
 
-- [ ] **File:** `packages/auth/src/session.ts`
-- [ ] `Session` type: `{ userId, discordId?, telegramId?, walletAddress?, source }`
-- [ ] `source`: `'web' | 'discord-activity' | 'discord-bot' | 'telegram-bot' | 'xapp'`
-- [ ] **Done when:** exported and documented
+- [x] **File:** `packages/auth/src/session.ts`
+- [x] `Session` type: `{ userId, discordId?, telegramId?, walletAddress?, source }`
+- [x] `source`: `'web' | 'discord-activity' | 'discord-bot' | 'telegram-bot' | 'xapp'`
+- [x] **Done when:** exported and documented
 
-- [ ] **File:** `packages/auth/src/adapters.ts`
-- [ ] Auth adapter interface for web / discord-activity / bot contexts
-- [ ] **Done when:** interface defined; no app imports yet
+- [x] **File:** `packages/auth/src/adapters.ts`
+- [x] Auth adapter interface for web / discord-activity / bot contexts
+- [x] **Done when:** interface defined; no app imports yet
 
-- [ ] **File:** `packages/auth/src/rules.ts`
-- [ ] Wallet link validation: one wallet per user, one Discord per wallet
-- [ ] **Done when:** unit tests cover conflict cases
+- [x] **File:** `packages/auth/src/rules.ts`
+- [x] Wallet link validation: one wallet per user, one Discord per wallet
+- [x] **Done when:** unit tests cover conflict cases
 
 ### `packages/xrpl`
 
-- [ ] **File:** `packages/xrpl/src/client.ts`
-- [ ] Connect to testnet / mainnet based on `XRPL_NETWORK`
-- [ ] **Done when:** connects and disconnects cleanly
+- [x] **File:** `packages/xrpl/src/client.ts`
+- [x] Connect to testnet / mainnet based on `XRPL_NETWORK`
+- [x] **Done when:** connects and disconnects cleanly
 
-- [ ] **File:** `packages/xrpl/src/payment.ts`
-- [ ] Payment payload builder (destination, amount, source tag)
-- [ ] **Done when:** produces valid XRPL Payment JSON
+- [x] **File:** `packages/xrpl/src/payment.ts`
+- [x] Payment payload builder (destination, amount, source tag)
+- [x] **Done when:** produces valid XRPL Payment JSON
 
-- [ ] **File:** `packages/xrpl/src/verify.ts`
-- [ ] Tx verify: hash, amount, destination, source tag match
-- [ ] **Done when:** unit tests with mocked tx objects
+- [x] **File:** `packages/xrpl/src/verify.ts`
+- [x] Tx verify: hash, amount, destination, source tag match
+- [x] **Done when:** unit tests with mocked tx objects
 
-- [ ] **File:** `packages/xrpl/src/listener.ts`
-- [ ] Listener interface: subscribe → emit normalized `LedgerEvent`
-- [ ] **Done when:** interface + types exported; impl stub OK
+- [x] **File:** `packages/xrpl/src/listener.ts`
+- [x] Listener interface: subscribe → emit normalized `LedgerEvent`
+- [x] **Done when:** interface + types exported; impl stub OK
 
 ### `packages/game-engine`
 
-- [ ] **File:** `packages/game-engine/src/xp.ts`
-- [ ] `addXp`, `levelFromXp`, `xpToNextLevel` — pure functions
-- [ ] **Done when:** unit tests pass
+- [x] **File:** `packages/game-engine/src/xp.ts`
+- [x] `addXp`, `levelFromXp`, `xpToNextLevel` — pure functions
+- [x] **Done when:** unit tests pass
 
-- [ ] **File:** `packages/game-engine/src/quests.ts`
-- [ ] Quest eligibility check, completion rules
-- [ ] **Done when:** unit tests for complete / incomplete / already-done
+- [x] **File:** `packages/game-engine/src/quests.ts`
+- [x] Quest eligibility check, completion rules
+- [x] **Done when:** unit tests for complete / incomplete / already-done
 
-- [ ] **File:** `packages/game-engine/src/boss.ts`
-- [ ] Boss HP state machine, damage application, defeat detection
-- [ ] **Done when:** unit tests for attack until defeated
+- [x] **File:** `packages/game-engine/src/boss.ts`
+- [x] Boss HP state machine, damage application, defeat detection
+- [x] **Done when:** unit tests for attack until defeated
 
-- [ ] **File:** `packages/game-engine/src/canvas.ts`
-- [ ] Pixel write rules: cooldown, faction color, bounds check
-- [ ] **Done when:** unit tests reject invalid writes
+- [x] **File:** `packages/game-engine/src/canvas.ts`
+- [x] Pixel write rules: cooldown, faction color, bounds check
+- [x] **Done when:** unit tests reject invalid writes
 
-- [ ] **File:** `packages/game-engine/src/leaderboard.ts`
-- [ ] Sort and rank helpers
-- [ ] **Done when:** unit tests for ties and rank assignment
+- [x] **File:** `packages/game-engine/src/leaderboard.ts`
+- [x] Sort and rank helpers
+- [x] **Done when:** unit tests for ties and rank assignment
 
 ### `packages/api-client`
 
-- [ ] **File:** `packages/api-client/src/client.ts`
-- [ ] Typed fetch wrapper + `ApiError` type
-- [ ] **Done when:** handles 4xx/5xx with typed error body
+- [x] **File:** `packages/api-client/src/client.ts`
+- [x] Typed fetch wrapper + `ApiError` type
+- [x] **Done when:** handles 4xx/5xx with typed error body
 
-- [ ] **File:** `packages/api-client/src/endpoints.ts`
-- [ ] Stubs: `getProfile`, `linkWallet`, `completeQuest`, `getLeaderboard`
-- [ ] **Done when:** all functions typed; impl can throw "not implemented"
+- [x] **File:** `packages/api-client/src/endpoints.ts`
+- [x] Stubs: `getProfile`, `linkWallet`, `completeQuest`, `getLeaderboard`
+- [x] **Done when:** all functions typed; impl can throw "not implemented"
 
 ### `packages/ui` (theme + base components)
 
-- [ ] **File:** `packages/ui/tailwind.preset.ts` — arcade tokens (see Design system)
-- [ ] **File:** `packages/ui/src/theme/arcade.css` — shadcn overrides
-- [ ] **File:** `packages/ui/src/components/ArcadeButton.tsx`
-- [ ] **File:** `packages/ui/src/components/ArcadePanel.tsx`
-- [ ] **File:** `packages/ui/src/components/XpBar.tsx`
-- [ ] **File:** `packages/ui/src/components/PixelBadge.tsx`
-- [ ] **Done when:** simple preview page or Storybook shows all four components
+- [x] **File:** `packages/ui/tailwind.preset.ts` — arcade tokens (see Design system)
+- [x] **File:** `packages/ui/src/theme/arcade.css` — shadcn overrides
+- [x] **File:** `packages/ui/src/components/ArcadeButton.tsx`
+- [x] **File:** `packages/ui/src/components/ArcadePanel.tsx`
+- [x] **File:** `packages/ui/src/components/XpBar.tsx`
+- [x] **File:** `packages/ui/src/components/PixelBadge.tsx`
+- [x] **Done when:** simple preview page or Storybook shows all four components
 
 ### Verify
 
@@ -300,61 +300,78 @@ All game-engine unit tests pass. `packages/ui` preview renders pixel theme compo
 
 ### Supabase schema
 
-- [ ] **File:** `supabase/migrations/001_core.sql`
-- [ ] Tables: `users`, `wallets`, `linked_accounts`, `profiles`
-- [ ] **Done when:** migration applies cleanly
+- [x] **File:** `supabase/migrations/001_core.sql`
+- [x] Tables: `users`, `wallets`, `linked_accounts`, `profiles`
+- [x] **Done when:** migration applies cleanly
 
-- [ ] **File:** `supabase/migrations/002_communities.sql`
-- [ ] Tables: `communities`, `community_members`, `community_settings`
-- [ ] **Done when:** Discord guild can map to `communities.external_id`
+- [x] **File:** `supabase/migrations/002_communities.sql`
+- [x] Tables: `communities`, `community_members`, `community_settings`
+- [x] **Done when:** Discord guild can map to `communities.external_id`
 
-- [ ] **File:** `supabase/migrations/003_game.sql`
-- [ ] Tables: `transactions`, `balances`, `game_events`, `quests`, `quest_completions`
-- [ ] **Done when:** migration applies; indexes on foreign keys
+- [x] **File:** `supabase/migrations/003_game.sql`
+- [x] Tables: `transactions`, `balances`, `game_events`, `quests`, `quest_completions`
+- [x] **Done when:** migration applies; indexes on foreign keys
 
-- [ ] **File:** `supabase/seed.sql`
-- [ ] 3 sample quests, 1 test community
-- [ ] **Done when:** `supabase db reset` seeds data
+- [x] **File:** `supabase/migrations/004_factions.sql`
+- [x] Tables: `factions`, `faction_members`; `profiles.faction_id` FK
+- [x] **Done when:** user-created factions with roles apply cleanly
+
+- [x] **File:** `supabase/seed.sql`
+- [x] 3 sample quests, 1 test community (no predefined factions)
+- [x] **Done when:** `supabase db push` + seed applies on hosted project
+
+### Factions (flexible — user-created)
+
+Factions are **not** predefined. Any user can create a faction (configurable fee, default `0.1` XRP via `FACTION_CREATION_FEE_XRP`; `0` = free). Creator becomes `leader`. Roles: `leader`, `officer`, `member`.
+
+- [x] **File:** `packages/config/src/env.ts` — `FACTION_CREATION_FEE_XRP`
+- [x] **File:** `packages/config/src/constants.ts` — `factionCreationFeeDrops`, `isFactionCreationFree`
+- [x] **File:** `packages/game-engine/src/factions.ts` — role rank + permission helpers + tests
+- [x] **File:** `packages/db/src/queries/factions.ts` — create, join, leave, role assignment
+- [x] **Routes:** `POST /factions`, `GET /factions`, `GET /factions/:id`, `POST /factions/:id/join`, `POST /factions/:id/leave`, `POST /factions/:id/members/:userId/role`
+- [x] **Done when:** free creation works; paid creation requires `paymentTxHash` (on-chain verify wired in M3)
 
 ### `apps/api` (Hono)
 
-- [ ] **File:** `apps/api/src/index.ts`
-- [ ] Hono app bootstrap, CORS, port from env
-- [ ] **Done when:** server starts on `API_URL` port
+- [x] **File:** `apps/api/src/index.ts`
+- [x] Hono app bootstrap, CORS, port from env
+- [x] **Done when:** server starts on `API_URL` port
 
-- [ ] **Route:** `GET /health`
-- [ ] **Done when:** returns `{ status: "ok" }`
+- [x] **Route:** `GET /health`
+- [x] **Done when:** returns `{ status: "ok" }`
 
-- [ ] **Route:** `POST /auth/link-wallet`
-- [ ] Links Xaman address to profile; uses `packages/auth` rules
-- [ ] **Done when:** duplicate wallet returns 409
+- [x] **Route:** `POST /auth/link-wallet`
+- [x] Links Xaman address to profile; uses `packages/auth` rules
+- [x] **Done when:** duplicate wallet returns 409
 
-- [ ] **Route:** `GET /profile/:id`, `GET /profile/me`
-- [ ] **Done when:** returns XP, level, wallet, linked accounts
+- [x] **Route:** `GET /profile/:id`, `GET /profile/me`
+- [x] **Done when:** returns XP, level, wallet, faction
 
-- [ ] **Route:** `POST /quests/:id/complete`
-- [ ] Uses `packages/game-engine` quest logic
-- [ ] **Done when:** awards XP, records completion, idempotent on repeat
+- [x] **Route:** `POST /quests/:id/complete`
+- [x] Uses `packages/game-engine` quest logic
+- [x] **Done when:** awards XP, records completion, idempotent on repeat
 
-- [ ] **Route:** `GET /leaderboard/global`
-- [ ] Uses `packages/game-engine` rank helpers
-- [ ] **Done when:** returns sorted list with rank numbers
+- [x] **Route:** `GET /leaderboard/global`
+- [x] Uses `packages/game-engine` rank helpers
+- [x] **Done when:** returns sorted list with rank numbers
 
-- [ ] **File:** `apps/api/src/middleware/`
-- [ ] Request logging, unified error shape, rate limit stub
-- [ ] **Done when:** all routes return consistent `{ error: { code, message } }` on failure
+- [x] **File:** `apps/api/src/middleware/`
+- [x] Request logging, unified error shape, rate limit stub, dev Bearer auth
+- [x] **Done when:** all routes return consistent `{ error: { code, message } }` on failure
 
-- [ ] Route handlers call `packages/db` + `packages/game-engine` only — **no inline game logic**
-- [ ] **Done when:** code review confirms thin handlers
+- [x] Route handlers call `packages/db` + `packages/game-engine` only — **no inline game logic**
+- [x] **Done when:** code review confirms thin handlers
 
 ### Verify
 
 ```bash
+pnpm --filter api test
 curl http://localhost:4000/health
-curl -X POST http://localhost:4000/quests/1/complete -H "Authorization: Bearer ..."
+curl -X POST http://localhost:4000/quests/<quest-id>/complete -H "Authorization: Bearer <userId>"
+curl -X POST http://localhost:4000/factions -H "Authorization: Bearer <userId>" -H "Content-Type: application/json" -d '{"name":"My Faction"}'
 ```
 
-Quest completion updates XP in DB. Leaderboard reflects change.
+Quest completion updates XP in DB. Leaderboard reflects change. Faction creation assigns caller as `leader`. Apply migrations to hosted Supabase: `supabase link` then `supabase db push`.
 
 ---
 
@@ -374,9 +391,8 @@ Quest completion updates XP in DB. Leaderboard reflects change.
 - [ ] XRPL WebSocket listener using `packages/xrpl`
 - [ ] **Done when:** worker connects to testnet and logs txs
 
-- [ ] **File:** `supabase/migrations/004_transactions.sql`
-- [ ] `transactions.tx_hash` UNIQUE constraint for idempotency
-- [ ] **Done when:** duplicate hash insert fails gracefully
+- [ ] **File:** `supabase/migrations/005_xrpl_verify.sql` (optional) — faction fee tx verification hooks
+- [ ] `transactions.tx_hash` UNIQUE already in `003_game.sql`; M3 adds listener + verify
 
 - [ ] Listener ingests validated Payment txs → updates `transactions` + profile
 - [ ] Records source tag when present
@@ -520,11 +536,11 @@ Two users tip each other in both modes. Rain splits across 5 users from arcade b
 
 ### API + schema
 
-- [ ] **File:** `supabase/migrations/005_games.sql`
-- [ ] Tables: `factions`, `faction_members`, `boss_events`, `canvas_pixels`
+- [ ] **File:** `supabase/migrations/005_games.sql` (or extend `003_game.sql`)
+- [ ] Tables: `boss_events`, `canvas_pixels` (`factions` / `faction_members` are in M2 `004_factions.sql`)
 - [ ] **Done when:** migrations apply
 
-- [ ] **Routes:** faction join/leave, boss attack, canvas paint
+- [ ] **Routes:** boss attack, canvas paint (faction routes exist from M2)
 - [ ] All logic in `packages/game-engine`; routes stay thin
 - [ ] **Done when:** API tests or manual curl confirms state changes
 
@@ -532,7 +548,7 @@ Two users tip each other in both modes. Rain splits across 5 users from arcade b
 
 - [ ] **File:** `packages/ui/src/components/BossFight.tsx` — HP bar, attack button, damage flash
 - [ ] **File:** `packages/ui/src/components/Canvas.tsx` — pixel grid, faction colors, paint on click
-- [ ] **File:** `packages/ui/src/components/FactionPicker.tsx` — join faction UI
+- [ ] **File:** `packages/ui/src/components/FactionPicker.tsx` — create or join faction UI
 - [ ] **Done when:** components accept session + api-client; no Next.js imports
 
 ### Web routes
@@ -544,7 +560,7 @@ Two users tip each other in both modes. Rain splits across 5 users from arcade b
 
 ### Discord bot commands
 
-- [ ] **Command:** `/faction join <name>`, `/faction leave`
+- [ ] **Command:** `/faction create <name>`, `/faction join <name>`, `/faction leave`
 - [ ] **Command:** `/boss` — spawn or show active boss
 - [ ] **Command:** `/attack <amount>`
 - [ ] **Done when:** boss HP drops from Discord commands

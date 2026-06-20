@@ -6,9 +6,19 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc --noEmit",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@wave/auth": "workspace:*",
+    "@wave/config": "workspace:*",
+    "@wave/db": "workspace:*",
+    "@wave/game-engine": "workspace:*",
+    "hono": "^4.7.5"
   },
   "devDependencies": {
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "vitest": "^3.0.5"
   }
 }

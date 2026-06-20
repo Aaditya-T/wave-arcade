@@ -1,0 +1,15 @@
+# Supabase local config (hosted project: use `supabase link` + `supabase db push`)
+
+project_id = "wave-arcade"
+
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323

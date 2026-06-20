@@ -4,7 +4,7 @@
 
 Wave Arcade helps XRPL communities convert passive members into active users through social payments, quests, bounties, mini-games, AI challenges, shared canvases, and live community events.
 
-Users can connect an XRPL wallet, tip friends, join factions, complete quests, attack community bosses, paint on collaborative canvases, participate in AI-powered challenges, collect badges, job boards and climb global or server-specific leaderboards — all powered by real XRPL interactions.
+Users can connect an XRPL wallet, tip friends, create or join factions, complete quests, attack community bosses, paint on collaborative canvases, participate in AI-powered challenges, collect badges, and climb global or server-specific leaderboards — all powered by real XRPL interactions.
 
 ---
 
@@ -122,6 +122,22 @@ Quests are designed to make XRPL onboarding interactive instead of intimidating.
 
 ---
 
+### Factions
+
+Users can **create** their own faction (configurable creation fee, default `0.1` XRP via `FACTION_CREATION_FEE_XRP`) or join an existing one. The creator becomes `leader`; members can hold roles (`leader`, `officer`, `member`) with rank-based permissions.
+
+Example commands:
+
+```txt
+/faction create "Wave Riders"
+/faction join wave-riders
+/faction leave
+```
+
+Factions compete on leaderboards, boss fights, and WaveCanvas.
+
+---
+
 ### Boss Fights
 
 Communities can join live boss fights where users attack a shared enemy together.
@@ -131,7 +147,6 @@ Example commands:
 ```txt
 /boss
 /attack 100
-/faction join xaman-knights
 ```
 
 Boss fights are designed for repeat engagement, faction rivalry, and community events.
@@ -409,13 +424,13 @@ NODE_ENV=development
 APP_URL=http://localhost:3000
 API_URL=http://localhost:4000
 
-# Supabase
+# Supabase (Dashboard → Settings → API Keys)
 SUPABASE_URL=
-SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SECRET_KEY=
 
-# XRPL
-XRPL_NETWORK=mainnet
+# XRPL (use mainnet in production)
+XRPL_NETWORK=testnet
 XRPL_RPC_URL=
 XRPL_SOURCE_TAG=
 
@@ -436,6 +451,9 @@ TELEGRAM_BOT_TOKEN=
 
 # Treasury / Platform
 TREASURY_WALLET_ADDRESS=
+
+# Factions (0 = free creation)
+FACTION_CREATION_FEE_XRP=0.1
 
 # AI
 OPENAI_API_KEY=

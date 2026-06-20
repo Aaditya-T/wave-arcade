@@ -1,18 +1,19 @@
-import { createServer } from 'node:http';
+import { serve } from '@hono/node-server';
+import { createSecretClient } from '@wave/db';
+import { parseEnv } from '@wave/config';
+import { createApp } from './app.js';
+import { BearerAuthAdapter } from './middleware/auth.js';
+import { createSupabaseDb } from './deps.js';
 
-const PORT = 4000;
+const env = parseEnv();
+const client = createSecretClient(env);
+const db = createSupabaseDb(client);
+const auth = new BearerAuthAdapter();
 
-const server = createServer((req, res) => {
-  if (req.url === '/health') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ ok: true }));
-    return;
-  }
+const app = createApp({ env, db, auth });
 
-  res.writeHead(404, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ error: 'Not found' }));
-});
+const port = Number(new URL(env.API_URL).port || 4000);
 
-server.listen(PORT, () => {
-  console.log(`[api] stub running at http://localhost:${PORT}`);
+serve({ fetch: app.fetch, port }, () => {
+  console.log(`[api] running at ${env.API_URL}`);
 });

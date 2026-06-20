@@ -1,0 +1,32 @@
+:root {
+  --background: #0a0a12;
+  --foreground: #e8e8f0;
+  --card: #14142a;
+  --card-foreground: #e8e8f0;
+  --popover: #14142a;
+  --popover-foreground: #e8e8f0;
+  --primary: #00f0ff;
+  --primary-foreground: #0a0a12;
+  --secondary: #ff00aa;
+  --secondary-foreground: #e8e8f0;
+  --muted: #14142a;
+  --muted-foreground: #8888aa;
+  --accent: #2a2a4a;
+  --accent-foreground: #e8e8f0;
+  --destructive: #ff00aa;
+  --destructive-foreground: #e8e8f0;
+  --border: #2a2a4a;
+  --input: #2a2a4a;
+  --ring: #00f0ff;
+  --radius: 2px;
+}
+
+/* shadcn component overrides */
+[data-radix-dialog-content],
+[data-sonner-toast] {
+  border-radius: 2px !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: 4px 4px 0 #000 !important;
+  background-color: var(--card) !important;
+  color: var(--foreground) !important;
+}
