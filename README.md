@@ -1,5 +1,7 @@
 # Wave Arcade
 
+<img src="./logo.png" alt="Wave Arcade logo" width="128" />
+
 **Wave Arcade is a gamified community economy for the XRP Ledger — turning Discord, Telegram, web, and Xaman into one shared social playground.**
 
 Wave Arcade helps XRPL communities convert passive members into active users through social payments, quests, bounties, mini-games, AI challenges, shared canvases, and live community events.
@@ -39,6 +41,24 @@ Wave Arcade combines:
 into one cross-platform XRPL engagement layer.
 
 Every user gets a unified profile across web, Discord, Telegram, and Xaman, backed by a shared database and linked XRPL wallet identity.
+
+---
+
+## Current Repository Snapshot
+
+Wave Arcade is in early MVP development, but the repo already has more than a scaffold:
+
+- **Monorepo foundation:** pnpm workspaces, Turbo tasks, shared TypeScript config, ESLint, and Prettier.
+- **API app:** Hono routes for health, wallet linking, profiles, quest completion, global leaderboard, and factions.
+- **Game engine package:** XP, quests, factions, boss, leaderboard, and canvas modules with Vitest coverage.
+- **Database package:** Supabase client factories, typed models, and query helpers.
+- **Auth package:** session types, adapter contracts, and rule tests.
+- **XRPL package:** payment, verification, listener, and client helpers with tests.
+- **UI package:** arcade theme tokens and base components for buttons, panels, XP bars, and badges.
+- **Web app:** a lightweight MVP landing page that serves the root `logo.png` and explains the first product loop.
+- **Bot and xApp apps:** placeholder entrypoints ready to become API clients.
+
+The immediate product goal is to connect the existing backend primitives to one visible user journey: link wallet, complete a quest, award XP, and show the result on a profile or leaderboard.
 
 ---
 
@@ -253,6 +273,40 @@ All interfaces connect to the same backend, database, wallet identity system, an
 
 ---
 
+## MVP Website
+
+The current web app intentionally stays small and dependency-light. It is a Node/TypeScript server in `apps/web` that renders a polished static page and serves the root `logo.png`.
+
+Run it locally:
+
+```bash
+pnpm --filter web dev
+```
+
+Then open:
+
+```txt
+http://localhost:3000
+```
+
+Useful local endpoints:
+
+```txt
+GET /          MVP website
+GET /logo.png  Wave Arcade logo asset
+GET /health    web health check
+```
+
+Next web milestones:
+
+- Replace static status numbers with API data from `/health`, `/leaderboard/global`, and `/factions`.
+- Add a profile view backed by `/profile/me`.
+- Add Xaman wallet linking through the API.
+- Add a quest list and a first quest completion flow.
+- Add deploy-ready hosting config once the API and database are connected.
+
+---
+
 ## Architecture
 
 ```txt
@@ -295,11 +349,7 @@ wave-arcade/
 │  └─ config/              # Shared config, constants, environment helpers
 │
 ├─ docs/
-│  ├─ architecture.md
-│  ├─ modules.md
-│  ├─ database.md
-│  ├─ xrpl-flow.md
-│  └─ roadmap.md
+│  └─ MILESTONES.md          # Build order and implementation checklist
 │
 ├─ supabase/
 │  ├─ migrations/
@@ -481,10 +531,22 @@ Run only the web app:
 pnpm --filter web dev
 ```
 
+Run only the web build check:
+
+```bash
+pnpm --filter web build
+```
+
 Run only the API:
 
 ```bash
 pnpm --filter api dev
+```
+
+Run API tests:
+
+```bash
+pnpm --filter api test
 ```
 
 Run Discord bot:
@@ -499,32 +561,44 @@ Run Telegram bot:
 pnpm --filter telegram-bot dev
 ```
 
+Run package test suites:
+
+```bash
+pnpm --filter @wave/game-engine test
+pnpm --filter @wave/auth test
+pnpm --filter @wave/config test
+pnpm --filter @wave/xrpl test
+```
+
 ---
 
 ## Planned MVP
 
-The initial MVP focuses on the smallest version that proves the full platform loop.
+The initial MVP should prove the full platform loop with the fewest moving parts: one wallet-linked profile, one quest, one verified XRPL action, one XP update, and one visible leaderboard/profile result.
 
 ### Phase 1
 
-- Web app
-- User profiles
-- Xaman wallet connect
-- Supabase schema
-- XRPL transaction tracking
-- Discord bot
-- Telegram bot
+- Public MVP website using the Wave Arcade logo
+- API health route and typed app setup
+- Supabase schema and seed data
+- Wallet-linked user profiles
+- Xaman wallet connect or ownership proof
+- First quest completion path
+- Global leaderboard display
 
 ### Phase 2
 
-- Tipping
 - Global leaderboard
-- Server leaderboard
 - XP system
 - Daily quests
+- Discord connect/profile commands
+- Telegram connect/profile commands
+- XRPL transaction tracking
 
 ### Phase 3
 
+- Tipping
+- Server leaderboard
 - Boss fights
 - Factions
 - WaveCanvas
@@ -595,16 +669,15 @@ This project is currently in early development.
 
 See [docs/MILESTONES.md](docs/MILESTONES.md) for the step-by-step build guide.
 
-Initial goals:
+Recommended next build steps:
 
-- Finalize architecture
-- Implement shared backend
-- Ship wallet connect
-- Launch Discord bot
-- Launch Telegram bot
-- Build first game modules
-- Deploy public web app
-- Track XRPL Mainnet activity
+- Run and fix any full-repo `pnpm build` issues.
+- Connect the web page to live API health and leaderboard data.
+- Implement the first wallet-linking flow with Xaman.
+- Add a profile page that reads the authenticated user from the API.
+- Seed demo factions, quests, and leaderboard rows for local development.
+- Turn Discord and Telegram placeholders into thin API clients.
+- Deploy the web app, API, and Supabase project for a public MVP.
 
 ---
 
