@@ -49,28 +49,27 @@ export async function completeQuestHandler(c: AppContext) {
   }
 
   const result = completeQuest(engineQuest, ctx);
-  if ('progress' in result) {
-    const xpUpdate = addXpWithLevel(profile.xp, quest.xp_reward);
-    await deps.db.recordQuestCompletion({
-      userId: session.userId,
-      questId,
-      xp: xpUpdate.xp,
-      level: xpUpdate.level,
-    });
-
-    return c.json({
-      ok: true,
-      alreadyDone: false,
-      xp: xpUpdate.xp,
-      level: xpUpdate.level,
-      leveledUp: xpUpdate.leveledUp,
-      xpAwarded: quest.xp_reward,
-    });
+  if ('reason' in result) {
+    if (result.reason === 'already-done') {
+      return c.json({ ok: true, alreadyDone: true, xp: profile.xp, level: profile.level });
+    }
+    throw apiError('quest_incomplete', result.reason, 400);
   }
 
-  if (result.reason === 'already-done') {
-    return c.json({ ok: true, alreadyDone: true, xp: profile.xp, level: profile.level });
-  }
+  const xpUpdate = addXpWithLevel(profile.xp, quest.xp_reward);
+  await deps.db.recordQuestCompletion({
+    userId: session.userId,
+    questId,
+    xp: xpUpdate.xp,
+    level: xpUpdate.level,
+  });
 
-  throw apiError('quest_incomplete', result.reason, 400);
+  return c.json({
+    ok: true,
+    alreadyDone: false,
+    xp: xpUpdate.xp,
+    level: xpUpdate.level,
+    leveledUp: xpUpdate.leveledUp,
+    xpAwarded: quest.xp_reward,
+  });
 }

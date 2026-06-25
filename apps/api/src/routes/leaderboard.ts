@@ -1,4 +1,4 @@
-import { assignRanks } from '@wave/game-engine';
+import { assignRanks, type RankedEntry } from '@wave/game-engine';
 import type { AppContext } from '../lib/response.js';
 
 export async function getGlobalLeaderboardHandler(c: AppContext) {
@@ -13,7 +13,7 @@ export async function getGlobalLeaderboardHandler(c: AppContext) {
   );
 
   return c.json({
-    entries: ranked.map((entry) => ({
+    entries: ranked.map((entry: RankedEntry) => ({
       userId: entry.userId,
       score: entry.score,
       rank: entry.rank,
