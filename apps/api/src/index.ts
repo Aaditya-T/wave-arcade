@@ -12,8 +12,12 @@ const auth = new BearerAuthAdapter();
 
 const app = createApp({ env, db, auth });
 
-const port = Number(new URL(env.API_URL).port || 4000);
+export default app;
 
-serve({ fetch: app.fetch, port }, () => {
-  console.log(`[api] running at ${env.API_URL}`);
-});
+if (!process.env.VERCEL) {
+  const port = Number(new URL(env.API_URL).port || 4000);
+
+  serve({ fetch: app.fetch, port }, () => {
+    console.log(`[api] running at ${env.API_URL}`);
+  });
+}

@@ -5,6 +5,21 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "api#build": {
+      "outputs": []
+    },
+    "web#build": {
+      "outputs": []
+    },
+    "xapp#build": {
+      "outputs": []
+    },
+    "telegram-bot#build": {
+      "outputs": []
+    },
+    "discord-bot#build": {
+      "outputs": []
+    },
     "dev": {
       "cache": false,
       "persistent": true
